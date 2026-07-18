@@ -1,0 +1,473 @@
+``html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pragati Dewangan | Technical Product Lead</title>
+  <style>
+    :root {
+      --ink: #18212f;
+      --muted: #5e6b7a;
+      --accent: #0d7c86;
+      --accent-soft: #e8f5f5;
+      --line: #dce4ea;
+      --surface: #f7f9fb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #eef2f5;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    .resume {
+      max-width: 1080px;
+      margin: 32px auto;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 1400px;
+      box-shadow: 0 12px 36px rgba(24, 33, 47, 0.12);
+    }
+
+    .sidebar {
+      padding: 42px 34px;
+      background: var(--surface);
+      border-right: 1px solid var(--line);
+    }
+
+    .main {
+      padding: 46px 52px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 8px;
+      font-size: 2.35rem;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+    }
+
+    .headline {
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .side-section {
+      margin-bottom: 30px;
+    }
+
+    .side-section h2 {
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .contact a,
+    .contact span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .contact a:hover { color: var(--accent); }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      padding: 6px 9px;
+      border: 1px solid #cfe2e4;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #17636a;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .side-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .side-list li {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .side-list strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.92rem;
+    }
+
+    .job {
+      position: relative;
+      padding: 0 0 24px 22px;
+      border-left: 2px solid #d7e5e7;
+    }
+
+    .job:last-child {
+      padding-bottom: 0;
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: -7px;
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+
+    .job h3 {
+      margin-bottom: 2px;
+      font-size: 1.06rem;
+    }
+
+    .company {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .dates {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .job ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .job li {
+      margin-bottom: 7px;
+    }
+
+    .sub-role {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .sub-role strong { color: var(--ink); }
+
+    .education-card {
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .education-card h3 {
+      margin-bottom: 3px;
+      font-size: 1rem;
+    }
+
+    .education-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      body { background: #fff; }
+
+      .resume {
+        display: block;
+        margin: 0;
+        box-shadow: none;
+      }
+
+      .sidebar,
+      .main {
+        padding: 30px 24px;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .job-header {
+        display: block;
+      }
+
+      .dates {
+        margin-top: 4px;
+        text-align: left;
+      }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .resume {
+        max-width: none;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="resume">
+    <aside class="sidebar">
+      <section class="side-section contact">
+        <h2>Contact</h2>
+        <a href="mailto:pragati.dewangan@gmail.com">pragati.dewangan@gmail.com</a>
+        <a href="https://www.linkedin.com/in/pragati-dewangan">
+          linkedin.com/in/pragati-dewangan
+        </a>
+        <span>Greater Hyderabad Area, India</span>
+      </section>
+
+      <section class="side-section">
+        <h2>Core Skills</h2>
+        <div class="skills">
+          <span class="skill">Product Strategy</span>
+          <span class="skill">Product Roadmaps</span>
+          <span class="skill">Feature Prioritization</span>
+          <span class="skill">AI-Enabled Workflows</span>
+          <span class="skill">Agile Delivery</span>
+          <span class="skill">Cross-Functional Leadership</span>
+          <span class="skill">Anti-Money Laundering</span>
+          <span class="skill">HP ALM</span>
+          <span class="skill">Quality Engineering</span>
+          <span class="skill">GraphQL Integrations</span>
+          <span class="skill">JIRA</span>
+        </div>
+      </section>
+
+      <section class="side-section">
+        <h2>Certifications</h2>
+        <ul class="side-list">
+          <li><strong>Certified Scrum Product Owner</strong>CSPO</li>
+          <li><strong>Certified ScrumMaster</strong>CSM</li>
+          <li><strong>AI for Product Management</strong></li>
+        </ul>
+      </section>
+
+      <section class="side-section">
+        <h2>Recognition</h2>
+        <ul class="side-list">
+          <li><strong>Bronze Award</strong></li>
+        </ul>
+      </section>
+
+      <section class="side-section">
+        <h2>Education</h2>
+        <ul class="side-list">
+          <li>
+            <strong>Bachelor's Degree</strong>
+            Electrical, Electronics and Communications Engineering<br />
+            Bhilai Institute of Technology<br />
+            2004 - 2008
+          </li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="main">
+      <header>
+        <h1>Pragati Dewangan</h1>
+        <p class="headline">
+          Technical Product Lead | Product Strategy, AI-Enabled Workflows,
+          Roadmap & Feature Prioritization
+        </p>
+        <p class="intro">
+          Product professional with 15+ years of experience across healthcare,
+          medical devices, banking, insurance, and enterprise platforms,
+          including 6+ years in product-focused roles. Connects customer needs,
+          business goals, and technical execution to deliver valuable,
+          customer-centric products and responsible AI-enabled workflows.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <h3>Technical Product Lead</h3>
+              <p class="company">Align Technology | India</p>
+            </div>
+            <div class="dates">Apr 2024 - Present</div>
+          </div>
+
+          <ul>
+            <li>
+              Spearheaded development and launch of a pivotal mobile-app feature
+              supporting increased market penetration in the dental sector.
+            </li>
+            <li>
+              Led cross-functional engineers and designers to deliver
+              customer-centric features on time and within budget.
+            </li>
+            <li>
+              Used customer feedback and analytics to prioritize the roadmap and
+              improve customer satisfaction.
+            </li>
+            <li>
+              Defined backend API requirements and technical documentation for
+              GraphQL integrations, supporting seamless frontend consumption and
+              improved development efficiency.
+            </li>
+            <li>
+              Partnered with UX/UI teams on intuitive customer journeys and led
+              Agile ceremonies, JIRA workflow improvements, and sprint delivery.
+            </li>
+          </ul>
+
+          <p class="sub-role">
+            <strong>Previous roles at Align Technology:</strong> Sr. Tech BA &
+            Scrum Master (Sep 2022 - May 2024); Senior SQA (Oct 2019 - May 2024)
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <h3>Team Lead</h3>
+              <p class="company">Accenture in India | Hyderabad Area, India</p>
+            </div>
+            <div class="dates">Sep 2015 - Oct 2019</div>
+          </div>
+
+          <ul>
+            <li>
+              Directed a team of 20 members, including partners, to deliver
+              Anti-Money Laundering requirements for a major banking client.
+            </li>
+            <li>
+              Reduced defect leakage by 15% through QA strategy and dependency
+              analysis.
+            </li>
+            <li>
+              Improved testing efficiency by 10% by implementing QA best
+              practices and targeted team training.
+            </li>
+            <li>
+              Partnered with business teams on UAT and managed dependencies to
+              reduce project risks by 10%.
+            </li>
+            <li>
+              Led automation and functional teams, mentored quality engineers,
+              and contributed to OKR creation and execution.
+            </li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <h3>Senior Associate</h3>
+              <p class="company">Genpact</p>
+            </div>
+            <div class="dates">Apr 2010 - Aug 2015</div>
+          </div>
+
+          <ul>
+            <li>
+              Created FMEA documentation, analyzed requirements, and maintained
+              query logs during project initiation and delivery.
+            </li>
+            <li>
+              Prepared offshore estimates, test requirement documents, test
+              scripts, and ALM traceability.
+            </li>
+            <li>
+              Led offshore UAT cycles, created test summary reports, and
+              participated in defect-triage calls.
+            </li>
+            <li>
+              Performed root-cause analysis for production defects, project
+              audits, and cross-functional training.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Product Focus</h2>
+        <div class="education-card">
+          <h3>AI-Enabled Product Management</h3>
+          <p>
+            Focused on intelligent automation that reduces manual effort,
+            improves decision-making, enhances customer experience, and helps
+            teams move faster while maintaining quality, risk awareness, and
+            user trust.
+          </p>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
+``
