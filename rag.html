@@ -1,0 +1,97 @@
+  <label for="doc-input">Add Document (title | content)</label>
+  <textarea id="doc-input" placeholder="Example: Doc Title | This is the document content..."></textarea>
+  <div class="row">
+    <button id="add-doc" class="btn">Add Document</button>
+    <button id="seed" class="btn ghost">Load Example Docs</button>
+  </div>
+
+  <label class="small-muted">Document Store</label>
+  <div class="docs-list panel" id="docs"></div>
+
+  <label class="small-muted">Retrieval Settings</label>
+  <div style="display:flex;gap:8px">
+    <div style="flex:1">
+      <select id="sim-method" class="input">
+        <option value="cosine">Simulated Cosine</option>
+        <option value="bm25">Simulated BM25</option>
+      </select>
+    </div>
+    <div style="width:86px">
+      <input id="top-k" class="input" type="number" min="1" max="10" value="3" />
+    </div>
+  </div>
+
+  <label class="small-muted">Prompt Template (uses {{context}} and {{question}})</label>
+  <textarea id="prompt-template">You are an assistant that answers questions using the provided context. Context: {{context}} Question: {{question}}</textarea>
+
+  <div class="row" style="margin-top:12px">
+    <button id="index-btn" class="btn">Index Documents</button>
+    <button id="clear-btn" class="btn ghost">Clear All</button>
+  </div>
+
+  <div style="margin-top:14px; font-size:12px; color:var(--muted)">
+    <strong>Notes:</strong>
+    <ul style="padding-left:18px; margin:6px 0 0 0">
+      <li>All operations are simulated locally.</li>
+      <li>Embeddings are numeric vectors derived from token hashing.</li>
+      <li>Generation is deterministic and uses retrieved passages as citations.</li>
+    </ul>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="panel">
+    <div class="panel-title">
+      <h2>Pipeline Flow</h2>
+      <div class="chips small-muted">
+        <span class="tag" id="doc-count">Docs: 0</span>
+        <span class="tag" id="idx-status">Index: No</span>
+      </div>
+    </div>
+
+    <div class="flow" id="flow">
+      <div class="step active" data-step="ingest">1. Ingest</div>
+      <div class="step" data-step="embed">2. Embed</div>
+      <div class="step" data-step="index">3. Index</div>
+      <div class="step" data-step="retrieve">4. Retrieve</div>
+      <div class="step" data-step="prompt">5. Prompt</div>
+      <div class="step" data-step="generate">6. Generate</div>
+    </div>
+  </div>
+
+  <div class="panel" style="display:flex; gap:12px;">
+    <div style="flex:1;">
+      <div class="panel-title">
+        <h2>Conversation</h2>
+        <div class="small-muted">Type a question to run the RAG pipeline</div>
+      </div>
+      <div class="conv" id="conv" style="min-height:220px; max-height:420px; overflow:auto; padding-top:6px"></div>
+      <footer>
+        <input id="question" class="input" placeholder="Ask a question about the documents..." />
+        <div class="controls-bottom">
+          <button id="ask" class="btn">Ask</button>
+          <button id="explain" class="btn ghost">Show Pipeline Log</button>
+        </div>
+      </footer>
+    </div>
+
+    <div style="width:420px;">
+      <div class="panel" style="height:100%;">
+        <div class="panel-title">
+          <h2>Pipeline Log</h2>
+          <div class="small-muted">Step-by-step details</div>
+        </div>
+        <div class="log" id="log" aria-live="polite"></div>
+      </div>
+
+      <div class="panel" style="margin-top:12px;">
+        <div class="panel-title">
+          <h2>Retrieved Passages</h2>
+          <div class="small-muted">Top-K results used as context</div>
+        </div>
+        <div id="retrieved" style="margin-top:10px"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
